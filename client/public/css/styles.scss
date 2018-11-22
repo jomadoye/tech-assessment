@@ -1,0 +1,59 @@
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1 0 auto;
+}
+
+.fixed-action-btn {
+  bottom: 270px;
+}
+
+.nav-dropdown {
+  margin-top: 60px;
+}
+
+.dashboard-header {
+  text-align: center;
+}
+
+.ReactTable {
+  width: 90%;
+  margin: auto;
+  & .-pagination {
+    padding: 0px;
+    box-shadow: none;
+  }
+  .pagination-bottom {
+    height: 80px;
+  }
+}
+
+.tech-assessment-role-id,
+.tech-assessment-role-id {
+    max-width: 100px;
+}
+.tech-assessment-username,
+.tech-assessment-username {
+    max-width: 200px;
+}
+.tech-assessment-fullname,
+.tech-assessment-fullname {
+    max-width: 200px;
+}
+.tech-assessment-user-id,
+.tech-assessment-user-id {
+    max-width: 80px;
+}
+.tech-assessment-created-at,
+.tech-assessment-created-at {
+    max-width: 120px;
+}
+.tech-assessment-updated-at,
+.tech-assessment-updated-at {
+    max-width: 120px;
+}
+

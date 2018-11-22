@@ -1,0 +1,8 @@
+//Your JWT secret Key
+SECRET=
+
+// The link to a database for testing the application
+DATABASE_TEST_URL=
+
+// The link to the database for running the application
+DATABASE_URL=

@@ -1,0 +1,22 @@
+engines:
+  duplications:
+    enabled: false
+    config:
+      languages:
+        - javascript
+  eslint:
+    enabled: true
+    exclude_fingerprints:
+    - 864c5b972fe27182603f8f89d338cdbc
+  fixme:
+    enabled: true
+ratings:
+  paths:
+    - server/**
+    - server/**/**
+    - client/**
+    - client/**/**
+languages:
+  JavaScript: true
+exclude_paths:
+  -server/models/index.js

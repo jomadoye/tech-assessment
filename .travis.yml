@@ -1,0 +1,8 @@
+sudo: required
+dist: trusty
+language: node_js
+node_js:
+  - node
+services:
+  - postgresql
+script: npm i -S react-tinymce && npm test
