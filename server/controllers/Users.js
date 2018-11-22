@@ -7,7 +7,6 @@ require('dotenv')
   .config();
 
 const User = models.Users;
-const Document = models.Documents;
 const signJwtToken = UserControllerHelper.signJwtToken;
 const isUpdateUser = UserControllerHelper.isUpdateUser;
 const isDestroyUser = UserControllerHelper.isDestroyUser;
@@ -16,12 +15,6 @@ const validateInput = UserControllerHelper.validateInput;
 
 export default {
 
-  /**
-   * This method creates a user
-   *
-   * @param {object} req
-   * @param {object} res
-   */
   create(req, res) {
     validateInput(req.body, commonValidations)
       .then(({
@@ -55,13 +48,6 @@ export default {
       });
   },
 
-  /**
-   * This method gets all users
-   *
-   * @param {object} req
-   * @param {object} res
-   * @returns {object} user
-   */
   list(req, res) {
     const limit = req.query.limit || null;
     const offset = req.query.offset || 0;
@@ -83,21 +69,10 @@ export default {
         .send(error));
   },
 
-  /**
-   * This method gets a specific user
-   *
-   * @param {object} req
-   * @param {object} res
-   * @returns {object} user
-   */
   retrieve(req, res) {
     return User
       .findById(req.params.userId, {
         attributes: ['username', 'email', 'fullname', 'id', 'roleId'],
-        include: [{
-          model: Document,
-          as: 'documents',
-        }],
       })
       .then((user) => {
         if (!user) {
@@ -114,41 +89,9 @@ export default {
         .send(error));
   },
 
-  /**
-   * This method checks if a user exists
-   *
-   * @param {object} req
-   * @param {object} res
-   * @returns {object} user
-   */
-  isUserExist(req, res) {
-    return User.find({
-      attributes: ['username', 'email'],
-      where: {
-        $or: [{ email: req.params.query }, { username: req.params.query }],
-      },
-    }).then((user) => {
-      res.json({ user });
-    })
-      .catch(error => res.status(400)
-        .send(error));
-  },
-
-  /**
-   * This method updates a user
-   *
-   * @param {object} req
-   * @param {object} res
-   * @returns {object} user
-   */
   update(req, res) {
     return User
-      .findById(req.params.userId, {
-        include: [{
-          model: Document,
-          as: 'documents',
-        }],
-      })
+      .findById(req.params.userId)
       .then((user) => {
         const response = isUpdateUser(user, res, req);
         return response;
@@ -160,13 +103,6 @@ export default {
         }));
   },
 
-  /**
-   * This method deletes a user
-   *
-   * @param {object} req
-   * @param {object} res
-   * @returns {string} message
-   */
   destroy(req, res) {
     return User
       .findById(req.params.userId)
@@ -181,14 +117,6 @@ export default {
           message: 'Error encountered when deleting user',
         }));
   },
-
-  /**
-   * This method logs a user in
-   *
-   * @param {object} req
-   * @param {object} res
-   * @returns {object} user{object} user
-   */
   login(req, res) {
     const loginQuery = req.body.query;
     return User.find({
@@ -208,12 +136,6 @@ export default {
         }));
   },
 
-  /**
-   * This method logs a user out
-   *
-   * @param {object} req
-   * @param {object} res
-   */
   logout(req, res) {
     res.setHeader['x-access-token'] = ' ';
     res.status(200)

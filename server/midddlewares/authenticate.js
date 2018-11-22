@@ -6,14 +6,6 @@ const User = models.Users;
 
 export default {
 
-  /**
-   * This method verifies the token of the user making the request
-   *
-   * @param {object} req
-   * @param {object} res
-   * @param {function} next
-   * @returns next
-   */
   verifyToken(req, res, next) {
     let token;
     if (req.headers.authorization) {

@@ -3,13 +3,8 @@ import React from 'react';
 import {
   shallow,
 } from 'enzyme';
-import NotFound from '../../../components/common/NotFound.jsx';
+import NotFound from '../../components/common/NotFound.jsx';
 
-/**
- * This function setup the component
- *
- * @returns {object}
- */
 function setup() {
   const props = {
   };

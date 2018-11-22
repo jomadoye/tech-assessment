@@ -5,13 +5,8 @@ import {
 } from 'enzyme';
 import {
   NavigationBar,
-} from '../../../components/common/NavigationBar.jsx';
+} from '../../components/common/NavigationBar.jsx';
 
-/**
- * This function setup the component
- *
- * @returns {object}
- */
 function setup() {
   const props = {
     login: {

@@ -20,13 +20,6 @@ class LoginPage extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
 
-  /**
-   * This method validates the user input
-   *
-   * @returns
-   *
-   * @memberof LoginPage
-   */
   isValid() {
     const { errors, isValid } = validateInput(this.state);
     if (!isValid) {
@@ -35,13 +28,6 @@ class LoginPage extends React.Component {
     return isValid;
   }
 
-  /**
-   * This method handles the onSubmit handler
-   *
-   * @param {object} event
-   *
-   * @memberof LoginPage
-   */
   onSubmit(event) {
     event.preventDefault();
     if (this.isValid()) {
@@ -55,13 +41,6 @@ class LoginPage extends React.Component {
     }
   }
 
-  /**
-   * This method handles the onChange handler
-   *
-   * @param {object} event
-   *
-   * @memberof LoginPage
-   */
   onChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }

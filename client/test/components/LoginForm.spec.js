@@ -3,13 +3,8 @@ import React from 'react';
 import {
   shallow,
 } from 'enzyme';
-import LoginForm from '../../../components/login/LoginForm.jsx';
+import LoginForm from '../../components/login/LoginForm.jsx';
 
-/**
- * This function setup the component
- *
- * @returns {object}
- */
 function setup() {
   const props = {
     state: {

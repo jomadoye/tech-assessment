@@ -3,14 +3,8 @@ import React from 'react';
 import {
   shallow,
 } from 'enzyme';
-import TextFieldGroup from '../../../components/common/TextFieldGroup.jsx';
+import TextFieldGroup from '../../components/common/TextFieldGroup.jsx';
 
-/**
- * This function setups the component
- *
- * @param {object} error
- * @returns {object}
- */
 function setup(error) {
   const props = {
     field: '',

@@ -3,14 +3,8 @@ import React from 'react';
 import {
   shallow,
 } from 'enzyme';
-import { Dashboard } from '../../../components/Dashboard/Dashboard.jsx';
+import { Dashboard } from '../../components/Dashboard/Dashboard.jsx';
 
-/**
- * This function setup the component
- *
- * @param {string} isSearchDocument
- * @returns {object}
- */
 function setup() {
   const props = {
     contextTypes: () => ({}),
@@ -27,7 +21,6 @@ function setup() {
         password: '$2a$08$mXt6ErO1NQVw4j/lkBsIseLxX7haeonkmgh9svP5XJQXC5oo02Z1a',
         createdAt: '2017-05-20T14:01:40.065Z',
         updatedAt: '2017-05-20T14:01:40.065Z',
-        documents: [],
       }],
     },
     deleteFlashMessage: () => ({}),

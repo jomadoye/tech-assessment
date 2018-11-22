@@ -3,9 +3,6 @@ import {
   LOAD_ALL_USERS_SUCCESS,
 } from '../actions/actionTypes';
 
-/** 
- * userReducer function
-*/
 export default function userReducer(state = initialState.user, action) {
   switch (action.type) {
     case LOAD_ALL_USERS_SUCCESS:

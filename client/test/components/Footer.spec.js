@@ -3,13 +3,8 @@ import React from 'react';
 import {
   shallow,
 } from 'enzyme';
-import Footer from '../../../components/common/footer.jsx';
+import Footer from '../../components/common/footer.jsx';
 
-/**
- * This function setup the component
- *
- * @returns {object}
- */
 function setup() {
   const props = {};
 

@@ -21,7 +21,7 @@
 }
 
 .ReactTable {
-  width: 90%;
+  width: 60%;
   margin: auto;
   & .-pagination {
     padding: 0px;
@@ -32,8 +32,8 @@
   }
 }
 
-.tech-assessment-role-id,
-.tech-assessment-role-id {
+.tech-assessment-role,
+.tech-assessment-role {
     max-width: 100px;
 }
 .tech-assessment-username,
@@ -43,6 +43,10 @@
 .tech-assessment-fullname,
 .tech-assessment-fullname {
     max-width: 200px;
+}
+.tech-assessment-email,
+.tech-assessment-email {
+    max-width: 300px;
 }
 .tech-assessment-user-id,
 .tech-assessment-user-id {
@@ -57,3 +61,6 @@
     max-width: 120px;
 }
 
+.delete-user-btn {
+  margin-left: 40px;
+}

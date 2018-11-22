@@ -1,16 +1,11 @@
 {
-  "name": "jeddoc-manager",
+  "name": "tech-assessment",
   "version": "1.0.0",
-  "description": "Jed document manager",
+  "description": "tech-assessment",
   "main": "app.js",
   "scripts": {
-    "start:dev": "nodemon --watch server --exec babel-node ./bin/www",
     "start": "nodemon --watch server --exec babel-node ./bin/www",
-    "start:server": "./node_modules/.bin/babel-node ./bin/www",
-    "start:client": "npm-run-all --parallel start:dev",
-    "build:server": "babel server -d dist/server",
     "lint": "node_modules/.bin/esw webpack.config.* client server",
-    "lint:watch": "npm run lint -- --watch",
     "db:test:seed": "NODE_ENV=test babel-node ./server/test-utility/seeders/seedDatabase",
     "db:seed": "NODE_ENV=development babel-node ./server/test-utility/seeders/seedDatabase",
     "mocha:testServer": "NODE_ENV=test nyc --reporter=text mocha \"./server/test/**/*.spec.js\" --compilers js:babel-register --timeout 10000",
@@ -19,10 +14,7 @@
     "db:migrate": "NODE_ENV=development sequelize db:migrate:undo:all && sequelize db:migrate",
     "test:server": "NODE_ENV=test npm run db:test:seed && npm run mocha:testServer",
     "snyk-test": "snyk test && NODE_ENV=test npm run db:test:seed && npm run mocha:testServer",
-    "report-coverage": "cat ./coverage/lcov.info | coveralls",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "test": "npm-run-all test:server mocha:testClient",
-    "test:all": "npm-run-all test:server mocha:testClient",
     "postinstall": "npm run db:seed",
     "build": "rm -rf dist/ && babel server -d dist/server && npm run build:client",
     "build:client": "webpack --config webpack.config.prod.js && cat client/index.html > dist/client/index.html",
@@ -31,12 +23,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andela-jomadoye/JedDoc-Manager.git"
+    "url": "git+https://github.com/jomadoye/Tech-Assessment.git"
   },
-  "keywords": [
-    "document",
-    "manager"
-  ],
   "author": "Omadoye Jedidiah",
   "license": "MIT",
   "dependencies": {
@@ -85,7 +73,6 @@
     "nock": "^9.0.13",
     "node-mocks-http": "^1.6.2",
     "node-sass": "^4.5.3",
-    "nodemailer": "^4.0.1",
     "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",
     "nyc": "^11.0.2-candidate.0",
@@ -130,8 +117,8 @@
     ]
   },
   "bugs": {
-    "url": "https://github.com/andela-jomadoye/JedDoc-Manager/issues"
+    "url": "https://github.com/jomadoye/tech-assessment/issues"
   },
-  "homepage": "https://github.com/andela-jomadoye/JedDoc-Manager#readme",
+  "homepage": "https://github.com/jomadoye/tech-assessment#readme",
   "snyk": true
 }

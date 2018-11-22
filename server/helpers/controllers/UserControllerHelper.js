@@ -7,23 +7,8 @@ require('dotenv')
 
 const secret = process.env.SECRET;
 
-/**
- * This class contains helper methods for
- * the user controller
- *
- * @class UserControllerHelper
- */
 class UserControllerHelper {
 
-  /**
-   * This method signs the JWT token for user who login
-   *
-   * @static
-   * @param {object} user
-   * @returns {string} token
-   *
-   * @memberof UserControllerHelper
-   */
   static signJwtToken(user) {
     const token = jwt.sign({
       data: user,
@@ -33,17 +18,6 @@ class UserControllerHelper {
     return token;
   }
 
-  /**
-   *  This method updates a user
-   *
-   * @static
-   * @param {object} user
-   * @param {object} res the response object
-   * @param {object} req the request object
-   * @returns {object} user
-   *
-   * @memberof UserControllerHelper
-   */
   static isUpdateUser(user, res, req) {
     let response = {};
     if (!user) {
@@ -79,16 +53,6 @@ class UserControllerHelper {
       });
   }
 
-  /**
-   * This method deletes a user
-   *
-   * @static
-   * @param {object} user
-   * @param {object} res the response object
-   * @returns {string} message
-   *
-   * @memberof UserControllerHelper
-   */
   static isDestroyUser(user, res) {
     let response = {};
     if (!user) {
@@ -117,17 +81,6 @@ class UserControllerHelper {
       });
   }
 
-  /**
-   * This method logs in auser
-   *
-   * @static
-   * @param {object} user
-   * @param {object} res the request object
-   * @param {object} req the response object
-   * @returns {object} user
-   *
-   * @memberof UserControllerHelper
-   */
   static isLoginUser(user, res, req) {
     let response = {};
     if (!user) {
@@ -171,16 +124,6 @@ class UserControllerHelper {
     }
   }
 
-  /**
-   * This method validates a user input
-   *
-   * @static
-   * @param {object} userDetails
-   * @param {object} otherValidations
-   * @returns {object} error
-   *
-   * @memberof UserControllerHelper
-   */
   static validateInput(userDetails, otherValidations) {
     const { errors } = otherValidations(userDetails);
     const User = models.Users;

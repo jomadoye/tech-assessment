@@ -1,13 +1,6 @@
 import Validator from 'validator';
 import lodash from 'lodash';
 
-/**
- * This function validates the user signup input
- *
- * @export
- * @param {object} data the user input
- * @returns {string}
- */
 export default function validateInput(data) {
   const hasPropertyFullname = Object.prototype.hasOwnProperty
     .call(data, 'fullname');

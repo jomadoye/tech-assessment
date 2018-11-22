@@ -13,9 +13,9 @@ import configureStore from './store/configureStore';
 
 const store = configureStore();
 
-if (localStorage.jwtToken_JedDoc) {
-  setAuthorizationToken(localStorage.jwtToken_JedDoc);
-  store.dispatch(setCurrentUser(jwtDecode(localStorage.jwtToken_JedDoc)));
+if (localStorage.jwtToken_TechAssessment) {
+  setAuthorizationToken(localStorage.jwtToken_TechAssessment);
+  store.dispatch(setCurrentUser(jwtDecode(localStorage.jwtToken_TechAssessment)));
 }
 render(
     <Provider store={store}>

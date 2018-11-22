@@ -10,10 +10,16 @@ var basename  = path.basename(module.filename);
 var env       = process.env.NODE_ENV || 'development';
 var config    = require(__dirname + './../config/config')[env];
 var db        = {};
+var databaseUrl;
 
+if ( env === 'development') {
+  databaseUrl = process.env.DATABASE_URL;
+} else {
+  databaseUrl = process.env.DATABASE_TEST_URL;
+}
 
 // var databaseUrl = 'postgres://pyreanii:og0MX9MODR32YCFjbC4GXifldrJVOJMK@stampy.db.elephantsql.com:5432/pyreanii';
-var databaseUrl = 'postgres://jed:Jedidiah007@localhost:5432/techuserlogin';
+// var databaseUrl = 'postgres://jed:Jedidiah007@localhost:5432/techuserlogin';
 var sequelize = new Sequelize(databaseUrl, config);
 
 fs

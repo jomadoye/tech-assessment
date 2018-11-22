@@ -35,10 +35,10 @@ const Cell = ({ columnName, value }) => {
           <span>{value.email}</span>
         </div>
       );
-    case 'ROLE ID':
+    case 'ROLE':
       return (
           <div className="table_cell">
-            <span>{value.roleId}</span>
+            <span>{value.roleId === 1 ? 'Admin' : 'Customer'}</span>
           </div>
       );
     case 'CREATED AT':
@@ -68,7 +68,7 @@ export class Dashboard extends React.Component {
   }
 
   render() {
-    const fields = ['USER ID', 'FULLNAME', 'USERNAME', 'EMAIL', 'ROLE ID', 'CREATED AT', 'UPDATED AT'];
+    const fields = ['USER ID', 'FULLNAME', 'USERNAME', 'EMAIL', 'ROLE', 'CREATED AT', 'UPDATED AT'];
 
     const columnMetadata = fields.map(columnName => ({
       Header:
@@ -104,12 +104,6 @@ Dashboard.propTypes = {
   allUsers: PropTypes.object.isRequired,
 };
 
-/**
- * mapDispatchToProps
- *
- * @param {function} dispatch
- * @returns dispatch
- */
 function mapDispatchToProps(dispatch) {
   return {
     loadAllUsers: (limit, offset) =>
@@ -118,12 +112,6 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-/**
- * mapStateToProps
- *
- * @param {object} state
- * @returns {object}
- */
 function mapStateToProps(state) {
   return {
     allUsers: state.user.allUsers,

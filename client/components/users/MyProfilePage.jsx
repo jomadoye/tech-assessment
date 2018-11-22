@@ -26,25 +26,11 @@ class myProfilePage extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
   }
 
-  /**
-   * This method runs when the component props is updated
-   *
-   * @param {object} nextProps
-   *
-   * @memberof myProfilePage
-   */
   componentWillReceiveProps(nextProps) {
     this.setState({ user: nextProps.user });
   }
 
-  /**
-   * This method updates the user state
-   *
-   * @param {object} event
-   * @returns
-   *
-   * @memberof myProfilePage
-   */
+  
   updateUserState(event) {
     const field = event.target.name;
     const user = Object.assign({}, this.state.user);
@@ -54,13 +40,6 @@ class myProfilePage extends React.Component {
     });
   }
 
-  /**
-   * This method updates a user profile
-   *
-   * @param {object} event
-   *
-   * @memberof myProfilePage
-   */
   updateUserProfile(event) {
     event.preventDefault();
     this.setState({ isUpdateingUser: true, showSubmitButton: false });
@@ -69,25 +48,11 @@ class myProfilePage extends React.Component {
     this.props.deleteFlashMessage(1);
   }
 
-  /**
-   * This method setups the user modal
-   *
-   * @param {object} event
-   *
-   * @memberof myProfilePage
-   */
   setupUpdateUser(event) {
     event.preventDefault();
     this.setState({ isUpdateingUser: false, showSubmitButton: true });
   }
 
-  /**
-   * This method handles user delete
-   *
-   * @param {object} event
-   *
-   * @memberof myProfilePage
-   */
   handleDelete(event) {
     event.preventDefault();
     swal({
@@ -111,7 +76,7 @@ class myProfilePage extends React.Component {
     return (
       <div>
         <div className="container center-align">
-          <h1>{this.props.user.fullname}, welcome to your profile page</h1>
+          <h4>{this.props.user.fullname}, welcome to your profile page</h4>
           <hr />
           <div className="row">
             <form className="col s8 offset-s2"
@@ -154,21 +119,17 @@ class myProfilePage extends React.Component {
                 </div>
               </div>
               <div>
-                {!showSubmitButton && <button
+                {!showSubmitButton ? (<button
                 onClick={this.setupUpdateUser}
-                id="editUserBtn"
                 className="btn waves-effect waves-light"
                 name="action">Edit User
                   <i className="material-icons right">send</i>
-                </button>}
-                  {showSubmitButton && <button
-                  id="editUserSubmitBtn"
+                </button>) : (<button
                   className="btn waves-effect waves-light"
                   type="submit" name="action">Submit
                     <i className="material-icons right">send</i>
-                  </button>}
-                  <button className="btn waves-effect waves-light"
-                  id="deleteUserBtn"
+                  </button>)}
+                  <button className="btn waves-effect waves-light delete-user-btn"
                   onClick={this.handleDelete}
                   name="action">Delete User
                     <i className="material-icons right">delete_forever</i>
@@ -197,12 +158,6 @@ myProfilePage.contextTypes = {
   router: PropTypes.object.isRequired,
 };
 
-/**
- * mapStateToProps
- *
- * @param {object} state
- * @returns {object} state
- */
 function mapStateToProps(state) {
   const hasUserDetailsProperty = Object.prototype.hasOwnProperty
     .call(state.user, 'userDetails');
@@ -220,12 +175,6 @@ function mapStateToProps(state) {
   };
 }
 
-/**
- * mapDispatchToProps
- *
- * @param {function} dispatch
- * @returns dispatch
- */
 function mapDispatchToProps(dispatch) {
   return {
     loadUserProfile: userId => dispatch(userAction.loadUserProfile(userId)),

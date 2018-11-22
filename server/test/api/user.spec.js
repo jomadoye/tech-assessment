@@ -29,7 +29,7 @@ const invalidToken = 'aassccfftteteteteteet';
 const should = chai.should();
 chai.use(chaiHttp);
 
-describe('User API', () => {
+describe.only('User API', () => {
   let userData;
   let basicUser;
   before((done) => {
@@ -247,42 +247,6 @@ describe('User API', () => {
           res.body.user.should.have.property('password');
           res.body.user.should.have.property('updatedAt');
           res.body.user.should.have.property('createdAt');
-          done();
-        });
-    });
-  });
-
-  describe('Search User by username', () => {
-    it('should search for a user by username', (done) => {
-      chai.request(server)
-        .get(`/api/search/users/?q=${userData.user.username}`)
-        .set('x-access-token', userData.token)
-        .end((err, res) => {
-          res.should.have.status(200);
-          res.body.message.should.eql('This is your user.');
-
-          done();
-        });
-    });
-
-    it('should not find user if username does not exist', (done) => {
-      chai.request(server)
-        .get(`/api/search/users/?q=${userData.user.username}notExist`)
-        .set('x-access-token', userData.token)
-        .end((err, res) => {
-          res.body.users.count.should.eql(0);
-          done();
-        });
-    });
-
-    it('should not find user if not admin', (done) => {
-      chai.request(server)
-        .get(`/api/search/users/?q=${userData.user.username}`)
-        .set('x-access-token', basicUser.token)
-        .end((err, res) => {
-          res.should.have.status(401);
-          res.body.message.should.eql('Admin access is required');
-
           done();
         });
     });

@@ -43,13 +43,6 @@ export default (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate(models) {
-        // associations can be defined here
-        User.hasMany(models.Documents, {
-          foreignKey: 'userId',
-          as: 'documents',
-          onDelete: 'SET NULL',
-        });
-
         User.belongsTo(models.Roles, {
           foreignKey: 'roleId',
           onDelete: 'SET NULL',

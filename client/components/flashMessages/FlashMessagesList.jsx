@@ -23,12 +23,6 @@ FlashMessageList.propTypes = {
   deleteFlashMessage: PropTypes.func.isRequired,
 };
 
-/**
- * mapStateToProps
- *
- * @param {object} state
- * @returns {object} state
- */
 function mapStateToProps(state) {
   return {
     messages: state.flashMessages,

@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import expect from 'expect';
-import App from '../../../components/App';
-import Footer from '../../../components/common/footer.jsx';
-import NavigationBar from '../../../components/common/NavigationBar.jsx';
+import App from '../../components/App';
+import Footer from '../../components/common/footer.jsx';
+import NavigationBar from '../../components/common/NavigationBar.jsx';
 
 describe(' Test for App Component', () => {
   it('renders the root component', () => {

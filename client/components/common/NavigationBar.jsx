@@ -10,13 +10,6 @@ export class NavigationBar extends React.Component {
     this.logout = this.logout.bind(this);
   }
 
-  /**
-   * This method handles logout
-   *
-   * @param {object} event
-   *
-   * @memberof NavigationBar
-   */
   logout(event) {
     event.preventDefault();
     this.context.router.push('/');
@@ -87,10 +80,7 @@ export class NavigationBar extends React.Component {
       <nav>
         <div className="nav-wrapper teal darken-4">
           <span className="brand-logo">
-            <i
-            id = "mobile-nav"
-            className="material-icons button-collapse"
-            data-activates="slide-out">menu</i>
+            <i className="material-icons button-collapse">assessment</i>
             Tech Assesment
           </span>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
@@ -112,12 +102,6 @@ NavigationBar.contextTypes = {
   router: PropTypes.object.isRequired,
 };
 
-/**
- * mapStateToProps
- *
- * @param {object} state
- * @returns {object} state
- */
 function mapStateToProps(state) {
   return {
     login: state.login,

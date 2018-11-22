@@ -12,7 +12,7 @@ class SignupPage extends React.Component {
       <div>
         <div className="row">
           <div className="col s8 offset-s2">
-            <h1 className="center-align welcome-message">Sign Up Here :-)</h1>
+            <h1 className="center-align welcome-message">Sign Up Here</h1>
             <SignupForm userSignupRequest={userSignupRequest}
             addFlashMessage={addFlashMessage}
             isUserExists={isUserExists} />
@@ -29,12 +29,6 @@ SignupPage.propTypes = {
   isUserExists: PropTypes.func.isRequired,
 };
 
-/**
- * This function maps the dispatch to the props
- *
- * @param {function} dispatch
- * @returns dispatch
- */
 function mapDispatchToProps(dispatch) {
   return {
     userSignupRequest: userData =>

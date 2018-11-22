@@ -58,7 +58,6 @@ describe('User Reducers', () => {
           password: '$2a$08$b.rXG69qFkdd3jGnLVrfUewpAC0zYx4vZifhMTKkwEJxG4n7lVAGO',
           createdAt: '2017-05-20T14:01:40.065Z',
           updatedAt: '2017-05-20T14:01:40.065Z',
-          documents: [],
         },
       },
       user: [],
@@ -87,7 +86,6 @@ describe('User Reducers', () => {
         password: '$2a$08$b.rXG69qFkdd3jGnLVrfUewpAC0zYx4vZifhMTKkwEJxG4n7lVAGO',
         createdAt: '2017-05-20T14:01:40.065Z',
         updatedAt: '2017-05-20T14:01:40.065Z',
-        documents: [],
       },
     });
 
@@ -113,7 +111,6 @@ describe('User Reducers', () => {
           password: '$2a$08$mXt6ErO1NQVw4j/lkBsIseLxX7haeonkmgh9svP5XJQXC5oo02Z1a',
           createdAt: '2017-05-20T14:01:40.065Z',
           updatedAt: '2017-05-20T14:01:40.065Z',
-          documents: [],
         },
       },
       user: [],
@@ -134,7 +131,6 @@ describe('User Reducers', () => {
           password: '$2a$08$b.rXG69qFkdd3jGnLVrfUewpAC0zYx4vZifhMTKkwEJxG4n7lVAGO',
           createdAt: '2017-05-20T14:01:40.065Z',
           updatedAt: '2017-05-20T14:01:40.065Z',
-          documents: [],
         },
       },
       user: [],
@@ -152,7 +148,6 @@ describe('User Reducers', () => {
           password: '$2a$08$mXt6ErO1NQVw4j/lkBsIseLxX7haeonkmgh9svP5XJQXC5oo02Z1a',
           createdAt: '2017-05-20T14:01:40.065Z',
           updatedAt: '2017-05-20T14:01:40.065Z',
-          documents: [],
         },
       },
     });
