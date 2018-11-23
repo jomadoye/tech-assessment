@@ -3,10 +3,10 @@ import {
 } from 'chai';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import * as userActions from '../../../actions/loginActions';
+import * as userActions from '../../actions/loginActions';
 import {
   SET_CURRENT_USER,
-} from '../../../actions/actionTypes';
+} from '../../actions/actionTypes';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);

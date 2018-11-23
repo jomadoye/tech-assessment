@@ -3,13 +3,13 @@ import {
 } from 'chai';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import * as userAction from '../../../actions/userAction';
+import * as userAction from '../../actions/userAction';
 import {
   LOAD_USER_PROFILE_SUCCESS,
   UPDATE_USER_PROFILE_SUCCESS,
   DELETE_USER_PROFILE_SUCCESS,
   LOAD_ALL_USERS_SUCCESS,
-} from '../../../actions/actionTypes';
+} from '../../actions/actionTypes';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
