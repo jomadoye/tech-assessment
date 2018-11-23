@@ -7,6 +7,7 @@ import { logout } from '../../actions/loginActions';
 export class NavigationBar extends React.Component {
   constructor(props) {
     super(props);
+
     this.logout = this.logout.bind(this);
   }
 
@@ -20,7 +21,7 @@ export class NavigationBar extends React.Component {
     const { isAuthenticated, user } = this.props.login;
     const userLinks = (
       <div>
-        <ul id="dropdown1" className="dropdown-content nav-dropdown">
+        <ul id="dropdown-nav" className="dropdown-content nav-dropdown">
           <li>
             <Link to="myprofile">
               Profile
@@ -36,11 +37,6 @@ export class NavigationBar extends React.Component {
           </li>
         </ul>
         <ul className="nav navbar-nav navbar-right">
-          {/* <li>
-            <div className="nav-wrapper">
-              <form />
-            </div>
-          </li> */}
           {isAuthenticated && (<li>
             <Link to="dashboard">
               Dashboard
@@ -48,7 +44,7 @@ export class NavigationBar extends React.Component {
             </Link>
           </li>)}
           <li>
-            <a className="dropdown-button" href="#!" data-activates="dropdown1">
+            <a className="dropdown-button" href="#" data-activates="dropdown-nav">
               {user && `Welcome, ${user.username}`}
               <i className="material-icons right">
                 arrow_drop_down

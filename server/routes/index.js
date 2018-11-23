@@ -22,7 +22,6 @@ const Route = (app) => {
     .route('/api/users/logout')
     .get(usersController.logout);
 
-  // apply the routes to our application with the prefix /api
   app.use('/api', verifyToken);
 
   // User routes
@@ -37,7 +36,6 @@ const Route = (app) => {
     .delete(isOwner, usersController.destroy);
 
 
-  // Roles routes
   app
     .route('/api/roles')
     .get(rolesController.list)
