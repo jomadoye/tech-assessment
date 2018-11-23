@@ -13,10 +13,10 @@ import MyProfilePage from './components/users/MyProfilePage.jsx';
 export default (
     <Route path="/" component={App}>
         <IndexRoute component={isloggedIn(SignupPage, 'signup')} />
-        <Route path="signup" component={isloggedIn(SignupPage, 'signup')}/>
-        <Route path="login" component={isloggedIn(LoginPage, 'login')}/>
-        <Route path="dashboard" component={VerifyToken(Dashboard)}/>
-        <Route path="myprofile" component={VerifyToken(MyProfilePage)}/>
-        <Route path="*" component={NotFound} status={404}/>
+        <Route path="signup" component={isloggedIn(SignupPage, 'signup')} />
+        <Route path="login" component={isloggedIn(LoginPage, 'login')} />
+        <Route path="dashboard" component={VerifyToken(Dashboard)} />
+        <Route path="myprofile" component={VerifyToken(MyProfilePage)} />
+        <Route path="*" component={NotFound} status={404} />
     </Route>
 );
