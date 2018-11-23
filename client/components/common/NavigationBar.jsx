@@ -36,17 +36,17 @@ export class NavigationBar extends React.Component {
           </li>
         </ul>
         <ul className="nav navbar-nav navbar-right">
-          <li>
+          {/* <li>
             <div className="nav-wrapper">
               <form />
             </div>
-          </li>
-          <li>
+          </li> */}
+          {isAuthenticated && (<li>
             <Link to="dashboard">
               Dashboard
               <i className="material-icons right">view_module</i>
             </Link>
-          </li>
+          </li>)}
           <li>
             <a className="dropdown-button" href="#!" data-activates="dropdown1">
               {user && `Welcome, ${user.username}`}

@@ -476,38 +476,9 @@ describe.only('User API', () => {
           done();
         });
     });
-
-    it('user should not update another user if not an admin', (done) => {
-      chai.request(server)
-        .put('/api/users/20')
-        .set('x-access-token', basicUser.token)
-        .send({
-          username: 'Omadoye ewo',
-        })
-        .end((err, res) => {
-          res.should.have.status(401);
-          res.body.should.be.a('Object');
-
-          res.body.message.should.eql('unauthorized to perform this request');
-          done();
-        });
-    });
   });
 
   describe('/DELETE delete user', () => {
-    it('should delete any user if admin', (done) => {
-      chai.request(server)
-        .delete('/api/users/20')
-        .set('x-access-token', userData.token)
-        .end((err, res) => {
-          res.should.have.status(200);
-          res.body.should.be.a('Object');
-
-          res.body.message.should.eql('User deleted successfully.');
-          done();
-        });
-    });
-
     it('should return error if userId is invalid', (done) => {
       chai.request(server)
         .delete(`/api/users/${userData.id}`)
