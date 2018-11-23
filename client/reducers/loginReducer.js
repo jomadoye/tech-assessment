@@ -3,7 +3,6 @@ import {
   SET_CURRENT_USER,
   UPDATE_USER_PROFILE_SUCCESS,
   LOAD_USER_PROFILE_SUCCESS,
-  DELETE_USER_PROFILE_SUCCESS,
 } from '../actions/actionTypes';
 import initialState from './initialState';
 
@@ -17,23 +16,15 @@ export default (state = initialState.isUser, action = {}) => {
 
     case LOAD_USER_PROFILE_SUCCESS:
       {
-        return Object.assign({}, state, {
-          user: action.userDetails,
-        });
+        return {
+          ...state, user: action.userDetails,
+        };
       }
 
     case UPDATE_USER_PROFILE_SUCCESS:
       {
-        return Object.assign({}, state, {
-          user: action.updatedUser.user,
-        });
+        return { ...state, user: action.updatedUser.user };
       }
-
-    case DELETE_USER_PROFILE_SUCCESS:
-      {
-        return state;
-      }
-
     default:
       return state;
   }

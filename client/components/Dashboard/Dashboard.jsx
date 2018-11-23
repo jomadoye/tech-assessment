@@ -108,11 +108,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-function mapStateToProps(state) {
-  return {
-    allUsers: state.user.allUsers,
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
-
+export default connect(state => ({ allUsers: state.user.allUsers }), mapDispatchToProps)(Dashboard);

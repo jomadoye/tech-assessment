@@ -60,9 +60,9 @@ class myProfilePage extends React.Component {
       closeOnConfirm: false,
     },
     () => {
+      this.props.deleteUserAccount(this.props.user.id);
       swal('Deleted!', 'This Account has been deleted.', 'success');
       this.props.logout();
-      this.props.deleteUserAccount(this.props.user.id);
     });
   }
 
@@ -142,7 +142,6 @@ class myProfilePage extends React.Component {
 myProfilePage.propTypes = {
   updateUserProfile: PropTypes.func.isRequired,
   deleteFlashMessage: PropTypes.func.isRequired,
-  loadUserProfile: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
   deleteUserAccount: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired,

@@ -462,20 +462,6 @@ describe.only('User API', () => {
           done();
         });
     });
-
-    it('user should update another user if having admin rights', (done) => {
-      chai.request(server)
-        .put('/api/users/20')
-        .set('x-access-token', userData.token)
-        .send(updateUsername1)
-        .end((err, res) => {
-          res.should.have.status(200);
-          res.body.should.be.a('Object');
-
-          res.body.message.should.eql('User updated successfully.');
-          done();
-        });
-    });
   });
 
   describe('/DELETE delete user', () => {
