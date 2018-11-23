@@ -15,9 +15,7 @@ export default function userReducer(state = initialState.user, action) {
           totalCount: action.metadata.totalCount,
           users: action.users,
         };
-        return Object.assign({}, state, {
-          allUsers: users,
-        });
+        return { ...state, allUsers: users };
       }
 
     default:

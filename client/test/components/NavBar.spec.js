@@ -31,7 +31,7 @@ describe('NavigationBar', () => {
   it('should have <div /> elements', () => {
     expect(wrapper.find('div')
           .length)
-        .toBe(4);
+        .toBe(3);
   });
 
   it('should have an <Link /> element', () => {
@@ -76,7 +76,7 @@ describe('NavigationBar', () => {
         .toBe(0);
     expect(wrapper.find('form')
           .length)
-        .toBe(1);
+        .toBe(0);
     expect(wrapper.find('h1')
           .length)
         .toBe(0);

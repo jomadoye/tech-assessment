@@ -9,28 +9,23 @@ import { deleteFlashMessage } from '../../actions/flashMessages';
 class myProfilePage extends React.Component {
   constructor(props) {
     super(props);
-    this.props.loadUserProfile(this.props.userId);
     this.state = {
       user: {
         username: this.props.user.username,
         fullname: this.props.user.fullname,
-        password: '',
+        password: this.props.user.password,
         email: this.props.user.email,
       },
-      isUpdateingUser: true,
+      isUpdatingUser: true,
       showSubmitButton: false,
     };
+
     this.updateUserState = this.updateUserState.bind(this);
     this.updateUserProfile = this.updateUserProfile.bind(this);
     this.setupUpdateUser = this.setupUpdateUser.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({ user: nextProps.user });
-  }
-
-  
   updateUserState(event) {
     const field = event.target.name;
     const user = Object.assign({}, this.state.user);
@@ -42,15 +37,15 @@ class myProfilePage extends React.Component {
 
   updateUserProfile(event) {
     event.preventDefault();
-    this.setState({ isUpdateingUser: true, showSubmitButton: false });
-    this.props.updateUserProfile(this.state.user, this.props.user.id,
-    this.props.roleId);
+    const { id, roleId } = this.props.user;
+    this.setState({ isUpdatingUser: true, showSubmitButton: false });
+    this.props.updateUserProfile(this.state.user, id, roleId);
     this.props.deleteFlashMessage(1);
   }
 
   setupUpdateUser(event) {
     event.preventDefault();
-    this.setState({ isUpdateingUser: false, showSubmitButton: true });
+    this.setState({ isUpdatingUser: false, showSubmitButton: true });
   }
 
   handleDelete(event) {
@@ -65,14 +60,15 @@ class myProfilePage extends React.Component {
       closeOnConfirm: false,
     },
     () => {
-      this.props.deleteUserAccount(this.props.userId);
-      this.props.logout();
+      this.props.deleteUserAccount(this.props.user.id);
       swal('Deleted!', 'This Account has been deleted.', 'success');
+      this.props.logout();
     });
   }
+
   render() {
-    const { isUpdateingUser, showSubmitButton } = this.state;
-    const disabled = isUpdateingUser;
+    const { isUpdatingUser, showSubmitButton } = this.state;
+    const disabled = isUpdatingUser;
     return (
       <div>
         <div className="container center-align">
@@ -146,10 +142,7 @@ class myProfilePage extends React.Component {
 myProfilePage.propTypes = {
   updateUserProfile: PropTypes.func.isRequired,
   deleteFlashMessage: PropTypes.func.isRequired,
-  loadUserProfile: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
-  userId: PropTypes.number.isRequired,
-  roleId: PropTypes.number.isRequired,
   deleteUserAccount: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired,
 };
@@ -158,31 +151,14 @@ myProfilePage.contextTypes = {
   router: PropTypes.object.isRequired,
 };
 
-function mapStateToProps(state) {
-  const hasUserDetailsProperty = Object.prototype.hasOwnProperty
-    .call(state.user, 'userDetails');
-  if (hasUserDetailsProperty) {
-    return {
-      userId: state.login.user.id,
-      roleId: state.login.user.roleId,
-      user: state.user.userDetails,
-    };
-  }
-  return {
-    userId: state.login.user.id,
-    user: state.login.user,
-    roleId: state.login.user.roleId,
-  };
-}
 
 function mapDispatchToProps(dispatch) {
   return {
-    loadUserProfile: userId => dispatch(userAction.loadUserProfile(userId)),
     logout: () => dispatch(loginAction.logout()),
     updateUserProfile: (user, userId, roleId) =>
       dispatch(userAction.updateUserProfile(user, userId, roleId)),
-    deleteFlashMessage: a => dispatch(deleteFlashMessage(a)),
+    deleteFlashMessage: message => dispatch(deleteFlashMessage(message)),
     deleteUserAccount: userId => dispatch(userAction.deleteUserAccount(userId)),
   };
 }
-export default connect(mapStateToProps, mapDispatchToProps)(myProfilePage);
+export default connect(state => ({ user: state.login.user }), mapDispatchToProps)(myProfilePage);

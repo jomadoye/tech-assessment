@@ -59,10 +59,6 @@ const Cell = ({ columnName, value }) => {
 };
 
 export class Dashboard extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     this.props.loadAllUsers();
   }
@@ -112,11 +108,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-function mapStateToProps(state) {
-  return {
-    allUsers: state.user.allUsers,
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
-
+export default connect(state => ({ allUsers: state.user.allUsers }), mapDispatchToProps)(Dashboard);
